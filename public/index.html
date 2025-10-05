@@ -2123,12 +2123,12 @@ All disputes shall be resolved via arbitration in Mumbai.`;
 
             // The payload needs to match what your original function was creating
             const payload = {
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                contents: [{
-                    parts: [{ text: fullPrompt }]
-                }]
+                system_instruction: { // <-- Corrected field name
+                parts: [{ text: systemPrompt }]
+            },
+            contents: [{
+                parts: [{ text: fullPrompt }]
+            }]
             };
 
             const lastImage = uploadedDocuments.slice().reverse().find(d => d.type.startsWith('image/'));
