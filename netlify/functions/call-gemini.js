@@ -17,7 +17,8 @@ exports.handler = async function(event) {
         // The data sent from your frontend
         const requestBody = JSON.parse(event.body);
 
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+        // NEW CORRECTED LINE
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
         
         // Use the exact payload structure your original code was using
         const payload = requestBody.payload;
