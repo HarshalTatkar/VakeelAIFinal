@@ -2117,19 +2117,14 @@ All disputes shall be resolved via arbitration in Mumbai.`;
 
         async function callGemini(prompt) {
             const caseContext = getCaseContext();
-            const fullPrompt = `${caseContext}\n\nBased on the context above, answer the following question from the user:\n\nUser's Question: "${prompt}"`;
+            const fullPrompt = `${systemPrompt}\n\n---\n\n${caseContext}\n\nBased on the context above, answer the following question from the user:\n\nUser's Question: "${prompt}"`;
 
-            const systemPrompt = "You are Vakeel-AI, an expert legal AI assistant for Indian law... [Keep your full system prompt here]";
-
-            // The payload needs to match what your original function was creating
-            const payload = {
-                system_instruction: { // <-- Corrected field name
-                parts: [{ text: systemPrompt }]
-            },
-            contents: [{
-                parts: [{ text: fullPrompt }]
-            }]
-            };
+	
+			const payload = {
+				contents: [{
+					parts: [{ text: fullPrompt }]
+				}]
+			};
 
             const lastImage = uploadedDocuments.slice().reverse().find(d => d.type.startsWith('image/'));
             if (lastImage && lastImage.data) {
