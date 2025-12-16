@@ -690,43 +690,6 @@
             color: #000;
         }
 
-        /* --- News Screen --- */
-        .news-item {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
-            margin-bottom: 12px;
-        }
-        .news-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-        .news-item .headline {
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-        .news-item .summary {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        .news-item .metadata {
-            font-size: 12px;
-            color: var(--text-secondary);
-            display: flex;
-            justify-content: space-between;
-        }
-        .news-item .metadata a {
-            color: var(--primary-accent);
-            text-decoration: none;
-        }
-        .loading-placeholder {
-            text-align: center;
-            color: var(--text-secondary);
-            padding: 20px;
-        }
-
     </style>
 </head>
 <body>
@@ -1296,161 +1259,30 @@
             </div>
         </section>
 
-        <!-- NEW KILLER FEATURE: WAR ROOM -->
-        <section id="screen-war-room" class="screen">
-            <div class="screen-header" style="background: linear-gradient(to right, #1a1a1a, #2a0a0a); border-bottom: 1px solid #ef4444;">
-                <button class="btn-sm" onclick="goBack()" data-lang-key="back">Back</button>
-                <h1 class="title" style="color: #ef4444;">⚔️ War Room</h1>
-                <div style="width: 50px;"></div>
-            </div>
-            <div class="screen-content">
-                <div class="card" style="border: 1px solid #ef4444;">
-                    <h3 style="color: #ef4444; margin-bottom: 8px;">Simulate Opposing Counsel</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">
-                        AI will adopt the persona of a ruthless opposition lawyer to find weaknesses in your case *before* you go to court.
-                    </p>
-                    
-                    <div class="input-group">
-                        <label>Select Case Context</label>
-                        <select id="war-room-case-select">
-                            <option value="sharma">State of Maharashtra vs. Anil Sharma</option>
-                            <option value="abc">ABC Corp vs. XYZ Industries</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Paste Your Main Argument / Petition Draft</label>
-                        <textarea id="war-room-input" rows="12" style="min-height: 250px; resize: vertical;" placeholder="Paste your draft argument here. The AI will attack it..."></textarea>
-                    </div>
-
-                    <button class="btn" style="background-color: #ef4444; color: white; border: none;" onclick="runWarRoomSimulation()">
-                        ⚔️ Run Adversarial Simulation
-                    </button>
-                </div>
-
-                <div id="war-room-results" style="display: none;">
-                    <h3 class="section-title" style="color: #ef4444;">Opposition Strategy Report</h3>
-                    <div class="card">
-                        <h4 style="color: #f59e0b; margin-bottom: 8px;">⚠️ Critical Vulnerabilities</h4>
-                        <div id="war-room-weaknesses" style="font-size: 14px; line-height: 1.5;"></div>
-                    </div>
-
-                    <div class="card">
-                        <h4 style="color: #ef4444; margin-bottom: 8px;">🔥 Likely Opposing Arguments</h4>
-                        <div id="war-room-attacks" style="font-size: 14px; line-height: 1.5;"></div>
-                    </div>
-
-                    <div class="card" style="border-color: #22c55e;">
-                        <h4 style="color: #22c55e; margin-bottom: 8px;">🛡️ Recommended Counter-Moves</h4>
-                        <div id="war-room-defense" style="font-size: 14px; line-height: 1.5;"></div>
-                    </div>
-                </div>
-                
-                <div id="war-room-loading" class="loading-placeholder" style="display: none;">
-                    <p>AI is analyzing case law...</p>
-                    <p>Constructing opposing arguments...</p>
-                    <p>Finding loop-holes in your draft...</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SCREEN: COLLABORATION (Teams) -->
-        <section id="screen-collaboration" class="screen">
-            <div class="screen-header">
-                <h1 class="title" data-lang-key="caseWorkspace">Case Workspace</h1>
-                <button class="btn-sm primary" onclick="alert('Invite user flow would start here.')" data-lang-key="inviteMember">Invite Member</button>
-            </div>
-            <div class="screen-content">
-                <h2 style="font-size: 18px; margin-bottom: 16px;">State of Maharashtra vs. Anil Sharma</h2>
-
-                <h3 class="section-title" style="margin-top:0;" data-lang-key="teamMembers">Team Members</h3>
-                <div class="card">
-                    <p><strong>Sr. Adv. Desai</strong> (Lead Counsel)</p>
-                    <p style="color:var(--text-secondary)">Adv. Mehra (You)</p>
-                    <p style="color:var(--text-secondary)">Adv. Priya Singh (Junior)</p>
-                </div>
-
-                <h3 class="section-title" data-lang-key="sharedDocuments">Shared Documents (Version Control)</h3>
-                <div class="card">
-                    <div>
-                        <p><strong>Bail_Application.pdf</strong></p>
-                        <p style="font-size: 12px; color: var(--gold-accent);">v2 - awaiting approval from Sr. Adv. Desai</p>
-                        <p style="font-size: 12px; color: var(--text-secondary); cursor:pointer;" onclick="alert('This would show the full version history and allow comparing documents.')">v1 - Uploaded by Adv. Priya Singh (21 Oct 2025)</p>
-                    </div>
-                    <hr style="border-color: var(--border-color); margin: 12px 0;">
-                    <div>
-                        <p><strong>Vakalatnama_Final.pdf</strong> <span style="color:var(--success); font-size: 12px;">(Approved)</span></p>
-                    </div>
-                </div>
-
-                <h3 class="section-title" data-lang-key="sharedTasks">Shared Tasks</h3>
-                <div class="card">
-                     <label style="display:flex; align-items:center; gap:10px; padding: 8px 0;"><input type="checkbox" checked> File Vakalatnama</label>
-                     <label style="display:flex; align-items:center; gap:10px; padding: 8px 0;"><input type="checkbox"> Research precedents for alibi defense (Assigned to: Priya)</label>
-                     <label style="display:flex; align-items:center; gap:10px; padding: 8px 0;"><input type="checkbox"> Draft written arguments</label>
-                </div>
-
-                <h3 class="section-title" data-lang-key="teamChat">Team Chat</h3>
-                <div class="card">
-                    <div class="chat-message user" style="margin-bottom: 8px;">
-                        <div class="chat-bubble" style="max-width: 100%;">Priya, please find the latest precedents on Section 302 IPC. We need it by EOD.</div>
-                    </div>
-                    <div class="chat-message ai" style="margin-bottom: 8px;">
-                        <div class="chat-bubble" style="max-width: 100%; background-color: var(--bg-tertiary);">On it, sir. Will upload the research note here.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SCREEN: NEWS -->
-        <section id="screen-news" class="screen">
-             <div class="screen-header">
-                <h1 class="title" data-lang-key="legalNews">Legal News</h1>
-                <button class="btn-sm" onclick="fetchNews(true)">🔄</button>
-            </div>
-            <div class="screen-content" id="news-content-area">
-                 <div class="loading-placeholder" id="news-loading" data-lang-key="loadingNews">
-                    Fetching latest legal news...
-                </div>
-            </div>
-        </section>
-
 
         <!-- Bottom Navigation Bar -->
-            <nav class="bottom-nav" id="main-nav">
-                <div class="nav-item active" data-screen="dashboard">
-                    <span class="icon">🏠</span>
-                    <span class="label" data-lang-key="navHome">Home</span>
-                </div>
-                <div class="nav-item" data-screen="all-cases">
-                    <span class="icon">📁</span>
-                    <span class="label" data-lang-key="navCases">Cases</span>
-                </div>
-                <div class="nav-item" data-screen="clients">
-                    <span class="icon">👥</span>
-                    <span class="label" data-lang-key="navClients">Clients</span>
-                </div>
-                <div class="nav-item" data-screen="war-room">
-                    <span class="icon" style="color: #ef4444;">⚔️</span>
-                    <span class="label" style="color: #ef4444;">War Room</span>
-                </div>
-                 <div class="nav-item" data-screen="ai-assistant">
-                    <span class="icon">✨</span>
-                    <span class="label" data-lang-key="navAssistant">Assistant</span>
-                </div>
-                <div class="nav-item" data-screen="collaboration">
-                    <span class="icon">🤝</span>
-                    <span class="label" data-lang-key="navTeam">Team</span>
-                </div>
-                <div class="nav-item" data-screen="news">
-                    <span class="icon">📰</span>
-                    <span class="label" data-lang-key="navNews">News</span>
-                </div>
-                <div class="nav-item" data-screen="settings">
-                    <span class="icon">⚙️</span>
-                    <span class="label" data-lang-key="navSettings">Settings</span>
-                </div>
-            </nav>
+        <nav class="bottom-nav" id="main-nav">
+            <div class="nav-item active" data-screen="dashboard">
+                <span class="icon">🏠</span>
+                <span class="label" data-lang-key="navHome">Home</span>
+            </div>
+            <div class="nav-item" data-screen="all-cases">
+                <span class="icon">📁</span>
+                <span class="label" data-lang-key="navCases">Cases</span>
+            </div>
+            <div class="nav-item" data-screen="clients">
+                <span class="icon">👥</span>
+                <span class="label" data-lang-key="navClients">Clients</span>
+            </div>
+             <div class="nav-item" data-screen="ai-assistant">
+                <span class="icon">✨</span>
+                <span class="label" data-lang-key="navAssistant">Assistant</span>
+            </div>
+            <div class="nav-item" data-screen="settings">
+                <span class="icon">⚙️</span>
+                <span class="label" data-lang-key="navSettings">Settings</span>
+            </div>
+        </nav>
     </div>
 
     <!-- Hidden file input -->
@@ -1617,14 +1449,7 @@
                 navCases: "Cases",
                 navClients: "Clients",
                 navAssistant: "Assistant",
-                navTeam: "Team",
-                navNews: "News",
                 navSettings: "Settings",
-                legalNews: "Legal News",
-                loadingNews: "Fetching latest legal news...",
-                readMore: "Read More",
-                newsFetchError: "Could not fetch news. Please try again.",
-                noNews: "No recent legal news found.",
                 scanDoc: "Scan Document",
                 uploadDoc: "Upload PDF/Image",
                 manualEntry: "Enter Manually",
@@ -2014,12 +1839,12 @@
         
         // --- Contract Analysis Logic ---
         const sampleContractText = `This Service Agreement is made between Party A and Party B.
-        Party A agrees to provide marketing services.
-        Party B agrees to pay a monthly fee of ₹50,000.
-        This agreement shall commence on October 1, 2025.
-        Party B may terminate this agreement at any time with 30 days notice. Party A may not terminate without cause.
-        In case of breach, the liability of Party A shall not exceed the total fees paid in the preceding three months, excluding any claims for reasonable damages.
-        All disputes shall be resolved via arbitration in Mumbai.`;
+Party A agrees to provide marketing services.
+Party B agrees to pay a monthly fee of ₹50,000.
+This agreement shall commence on October 1, 2025.
+Party B may terminate this agreement at any time with 30 days notice. Party A may not terminate without cause.
+In case of breach, the liability of Party A shall not exceed the total fees paid in the preceding three months, excluding any claims for reasonable damages.
+All disputes shall be resolved via arbitration in Mumbai.`;
 
         function goToContractAnalysis() {
             document.getElementById('contract-text-display').textContent = sampleContractText;
@@ -2339,149 +2164,6 @@
                     return `Error: ${error.message}`;
                 }
             }
-
-        // --- News & War Room additions ---
-        let newsCache = null; // cache for news
-
-        async function callGeminiAPI_forNews(prompt) {
-            // Best-effort: if Netlify function exists, use it with same wrapper; otherwise fallback
-            try {
-                // Try using Netlify function first (keeps API key server-side)
-                const resp = await fetch('/.netlify/functions/call-gemini', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ payload: { contents:[{ parts:[{ text: prompt }] }] } })
-                });
-                if (resp.ok) {
-                    const json = await resp.json();
-                    const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
-                    if (text) return text;
-                }
-            } catch (e) {
-                console.warn('Netlify news call failed, falling back to direct call if key present.', e);
-            }
-
-            // If Netlify not available, try direct call (requires GEMINI_API_KEY on client - not recommended)
-            if (typeof GEMINI_API_KEY !== 'undefined' && GEMINI_API_KEY && GEMINI_API_KEY !== 'YOUR_API_KEY') {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`;
-                const payload = { contents:[{ parts:[{ text: prompt }] }], tools:[{"google_search":{}}] };
-                const r = await fetch(apiUrl, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-                if (r.ok) {
-                    const j = await r.json();
-                    return j.candidates?.[0]?.content?.parts?.[0]?.text || '[]';
-                }
-            }
-
-            // Fallback: return helpful message so UI can show something
-            return JSON.stringify([{headline: "API Key Missing", summary: "News fetch not configured. Please configure your server-side news pipeline.", sourceName: "System", sourceUrl: "#"}]);
-        }
-
-        async function fetchNews(forceRefresh = false) {
-            const newsContentArea = document.getElementById('news-content-area');
-            const loadingIndicator = document.getElementById('news-loading');
-            const currentLangData = translations[getCurrentLang()];
-
-            if (!newsContentArea || !loadingIndicator) return;
-
-            loadingIndicator.style.display = 'block';
-            newsContentArea.innerHTML = '';
-            newsContentArea.appendChild(loadingIndicator);
-
-            if (newsCache && !forceRefresh) {
-                displayNews(newsCache);
-                return;
-            }
-
-            try {
-                const newsPrompt = `\nYou are a legal news aggregator for Indian lawyers. Search the web for the top 5 legal news items in India in the last 48 hours. Return a JSON array of objects with headline, summary (2 sentences), sourceName, sourceUrl. Return only raw JSON.`;
-                const raw = await callGeminiAPI_forNews(newsPrompt);
-
-                let items = [];
-                try {
-                    const match = raw.match(/\[.*\]/s);
-                    if (match) items = JSON.parse(match[0]);
-                    else items = JSON.parse(raw);
-                } catch (e) {
-                    console.error('News parse error', e, raw);
-                    items = [{ headline: currentLangData.newsFetchError || 'Could not fetch news', summary: '', sourceName: 'System', sourceUrl: '#' }];
-                }
-
-                newsCache = items;
-                displayNews(items);
-            } catch (error) {
-                console.error('Error fetching news', error);
-                loadingIndicator.textContent = translations[getCurrentLang()].newsFetchError || 'Could not fetch news.';
-                newsContentArea.innerHTML = '';
-                newsContentArea.appendChild(loadingIndicator);
-            }
-        }
-
-        function displayNews(newsItems) {
-            const newsContentArea = document.getElementById('news-content-area');
-            const loadingIndicator = document.getElementById('news-loading');
-            const currentLangData = translations[getCurrentLang()];
-            if (!newsContentArea || !loadingIndicator) return;
-            loadingIndicator.style.display = 'none';
-            newsContentArea.innerHTML = '';
-
-            if (!newsItems || newsItems.length === 0) {
-                newsContentArea.innerHTML = `<div class="loading-placeholder">${currentLangData.noNews || 'No recent legal news found.'}</div>`;
-                return;
-            }
-
-            newsItems.forEach(item => {
-                const newsDiv = document.createElement('div');
-                newsDiv.className = 'news-item card';
-                const headline = item.headline ? String(item.headline).replace(/</g, '&lt;') : 'No Headline';
-                const summary = item.summary ? String(item.summary).replace(/</g, '&lt;') : 'No Summary';
-                const sourceName = item.sourceName ? String(item.sourceName).replace(/</g, '&lt;') : 'Source';
-                const sourceUrl = item.sourceUrl ? String(item.sourceUrl) : '#';
-
-                newsDiv.innerHTML = `\n                    <div class="headline">${headline}</div>\n                    <div class="summary">${summary}</div>\n                    <div class="metadata">\n                        <span style="font-weight:600; color: var(--primary-accent);">${sourceName}</span>\n                        ${sourceUrl !== '#' ? `<a href="${sourceUrl}" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: underline;">${currentLangData.readMore || 'Read Original'} ↗</a>` : ''}\n                    </div>\n                `;
-                newsContentArea.appendChild(newsDiv);
-            });
-        }
-
-        // --- War Room Logic ---
-        async function runWarRoomSimulation() {
-            const input = document.getElementById('war-room-input')?.value;
-            const resultsDiv = document.getElementById('war-room-results');
-            const loadingDiv = document.getElementById('war-room-loading');
-            if (!input) { alert('Please enter your argument draft first.'); return; }
-
-            resultsDiv.style.display = 'none';
-            loadingDiv.style.display = 'block';
-
-            const warRoomPrompt = `\nACT AS A RUTHLESS OPPOSING COUNSEL in an Indian Court.\nI am providing you with a draft argument/petition for the case: \"State of Maharashtra vs. Anil Sharma\".\nYOUR JOB is to destroy this argument. Find every loophole, every weak precedent, and every logical fallacy.\nDraft Text: "${input}"\nReturn a JSON object with keys: weaknesses (list), attacks (list), defense (list). Return ONLY raw JSON.`;
-
-            try {
-                const rawResponse = await callGemini(warRoomPrompt, "You are a senior opposition lawyer. Be critical, sharp, and legally precise.");
-                let data = {};
-                try {
-                    const jsonMatch = rawResponse.match(/\{[\s\S]*\}/);
-                    if (jsonMatch) data = JSON.parse(jsonMatch[0]); else data = JSON.parse(rawResponse);
-                } catch (e) {
-                    console.error('War Room JSON Parse Error', e);
-                    data = { weaknesses: ['Could not parse weaknesses.'], attacks: ['AI generated a response but not in strict format.'], defense: ['Review input manually.'] };
-                }
-
-                document.getElementById('war-room-weaknesses').innerHTML = formatList(data.weaknesses);
-                document.getElementById('war-room-attacks').innerHTML = formatList(data.attacks);
-                document.getElementById('war-room-defense').innerHTML = formatList(data.defense);
-
-                loadingDiv.style.display = 'none';
-                resultsDiv.style.display = 'block';
-            } catch (error) {
-                console.error('War Room Error:', error);
-                loadingDiv.style.display = 'none';
-                alert('Simulation failed. Please check your connection.');
-            }
-        }
-
-        function formatList(items) {
-            if (!items || !Array.isArray(items)) return '<p>No data generated.</p>';
-            return `<ul style="padding-left: 20px; margin: 0;">${items.map(item => `<li style="margin-bottom: 8px;">${item}</li>`).join('')}</ul>`;
-        }
         
         // --- Initial Load ---
         document.addEventListener('DOMContentLoaded', () => {
