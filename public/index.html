@@ -2363,7 +2363,7 @@
 
             // If Netlify not available, try direct call (requires GEMINI_API_KEY on client - not recommended)
             if (typeof GEMINI_API_KEY !== 'undefined' && GEMINI_API_KEY && GEMINI_API_KEY !== 'YOUR_API_KEY') {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
                 const payload = { contents:[{ parts:[{ text: prompt }] }], tools:[{"google_search":{}}] };
                 const r = await fetch(apiUrl, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
                 if (r.ok) {
